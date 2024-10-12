@@ -1,0 +1,55 @@
+# Merge Sort
+def merge_sort(marco):
+    if len(marco) > 1:
+        mid = len(marco) // 2
+        abril = marco[:mid]
+        maio = marco[mid:]
+
+        merge_sort(abril)
+        merge_sort(maio)
+
+        i = j = k = 0
+
+        while i < len(abril) and j < len(maio):
+            if parse_datetime(abril[i]) < parse_datetime(maio[j]):
+                marco[k] = abril[i]
+                i += 1
+            else:
+                marco[k] = maio[j]
+                j += 1
+            k += 1
+
+        while i < len(abril):
+            marco[k] = abril[i]
+            i += 1
+            k += 1
+
+        while j < len(maio):
+            marco[k] = maio[j]
+            j += 1
+            k += 1
+
+# Lista de eventos
+marco = [
+    "27/09/2024 09:30 Olha! Recife a Pé – Recife Walking Tour",
+    "28/09/2024 09:00 Olha! Recife no Rio – Ilha de Deus",
+    "28/09/2024 09:00 Olha! Recife de Ônibus – Jardim Botânico",
+    "28/09/2024 14:00 Olha! Recife de Ônibus – Instituto Ricardo Brennand",
+    "29/09/2024 13:00 Olha! Recife de Ônibus – Fundação Gilberto Freyre",
+    "29/09/2024 09:00 Olha! Recife Pedalando – Antigos Cinemas do Recife",
+    "02/10/2024 14:00 Olha! Recife a Pé – Pátio do Terço e Arredores",
+    "04/10/2024 09:30 Olha! Recife a Pé – Recife Walking Tour",
+    "01/10/2024 21:00 Olha! Recife Noturno – Tour Histórico",
+    "29/09/2024 09:00 Olha! Recife Pedalando – Antigos Cinemas do Recife",
+    "26/09/2024 12:00 Olha! Recife de Barco – Passeio no Capibaribe",
+]
+
+# Medir tempo de execução
+start_time = time.time()
+merge_sort(marco)
+end_time = time.time()
+
+print("Merge Sort:")
+for evento in marco:
+    print(evento)
+print("Tempo de execução:", end_time - start_time, "segundos")
