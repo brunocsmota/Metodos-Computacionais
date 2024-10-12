@@ -1,0 +1,48 @@
+# Heap Sort
+def heapify(fevereiro, n, marco):
+    largest = marco
+    left = 2 * marco + 1
+    right = 2 * marco + 2
+
+    if left < n and parse_datetime(fevereiro[left]) > parse_datetime(fevereiro[largest]):
+        largest = left
+
+    if right < n and parse_datetime(fevereiro[right]) > parse_datetime(fevereiro[largest]):
+        largest = right
+
+    if largest != marco:
+        fevereiro[marco], fevereiro[largest] = fevereiro[largest], fevereiro[marco]
+        heapify(fevereiro, n, largest)
+
+def heapsort(fevereiro):
+    n = len(fevereiro)
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(fevereiro, n, i)
+    for i in range(n - 1, 0, -1):
+        fevereiro[i], fevereiro[0] = fevereiro[0], fevereiro[i]
+        heapify(fevereiro, i, 0)
+
+# Lista de eventos
+fevereiro = [
+    "27/09/2024 09:30 Olha! Recife a Pé – Recife Walking Tour",
+    "28/09/2024 09:00 Olha! Recife no Rio – Ilha de Deus",
+    "28/09/2024 09:00 Olha! Recife de Ônibus – Jardim Botânico",
+    "28/09/2024 14:00 Olha! Recife de Ônibus – Instituto Ricardo Brennand",
+    "29/09/2024 13:00 Olha! Recife de Ônibus – Fundação Gilberto Freyre",
+    "29/09/2024 09:00 Olha! Recife Pedalando – Antigos Cinemas do Recife",
+    "02/10/2024 14:00 Olha! Recife a Pé – Pátio do Terço e Arredores",
+    "04/10/2024 09:30 Olha! Recife a Pé – Recife Walking Tour",
+    "01/10/2024 21:00 Olha! Recife Noturno – Tour Histórico",
+    "29/09/2024 09:00 Olha! Recife Pedalando – Antigos Cinemas do Recife",
+    "26/09/2024 12:00 Olha! Recife de Barco – Passeio no Capibaribe",
+]
+
+# Medir tempo de execução
+start_time = time.time()
+heapsort(fevereiro)
+end_time = time.time()
+
+print("Heap Sort:")
+for evento in fevereiro:
+    print(evento)
+print("Tempo de execução:", end_time - start_time, "segundos\n")
