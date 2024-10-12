@@ -1,3 +1,13 @@
+from datetime import datetime
+import time
+
+# Função para converter a string de data e hora
+def parse_datetime(evento):
+    try:
+        return datetime.strptime(evento.split(" ")[0], "%d/%m/%Y")
+    except ValueError:
+        return None
+
 # Merge Sort
 def merge_sort(marco):
     if len(marco) > 1:
